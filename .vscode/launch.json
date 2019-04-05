@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File (Integrated Terminal)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: het_begin.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/het_begin.py",
+            "console": "integratedTerminal",
+            "stopOnEntry": true
+        }
+    ]
+}
