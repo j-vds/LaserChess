@@ -9,11 +9,12 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Python: het_begin.py",
+            "name": "Python: test",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/het_begin.py",
-            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/LaserChess.py",
+            "console": "externalTerminal",
+            
             "stopOnEntry": true
         }
     ]
