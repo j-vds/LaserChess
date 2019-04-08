@@ -15,7 +15,8 @@ class GameObject(object):
         self.sprite.draw()
 
 class King(GameObject):
-    pass
+    def __init__(self):
+        pass
 
 class Switch(GameObject):
     pass
