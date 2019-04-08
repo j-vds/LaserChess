@@ -13,4 +13,19 @@ class GameObject(object):
     
     def draw(self):
         self.sprite.draw()
+
+class King(GameObject):
+    pass
+
+class Switch(GameObject):
+    pass
+
+class Defender(GameObject):
+    pass
+
+class Deflector(GameObject):
+    pass
+
+class Laser(GameObject):
+    pass
         
