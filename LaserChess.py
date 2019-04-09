@@ -52,6 +52,7 @@ class Scherm(pyglet.window.Window):
     def create_veld(self, rows=10, columns=10): #, name=None):
         #read from file
         #TODO
+        pass
         return 0
 
 
