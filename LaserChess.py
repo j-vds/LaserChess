@@ -1,5 +1,5 @@
 import pyglet
-from res.stukken import GameObject
+from res.stukken import GameObject, King
 
 
 #https://www.youtube.com/watch?v=vpMgbCsKviU&t=202s
@@ -13,9 +13,10 @@ class Scherm(pyglet.window.Window):
         self.vakjes = []
         for i in range(10):
             for j in range(10):
-                self.vakjes.append(GameObject(10,10,i*50,j*50, image=img))
+                self.vakjes.append(GameObject(i*50,j*50, image=img))
         #self.vakje = GameObject(10, 10, image=img)
         #self.vakje2 = GameObject(10, 10, 50, 50, image=img)
+        self.vakjes.append(King(image="res/images/king.png"))
 
 
 
