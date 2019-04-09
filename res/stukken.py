@@ -19,6 +19,7 @@ class GameObject(object):
 
         self.rotation = 0
         self.maxrot = 1
+        self.team = 0
     
     def draw(self):
         self.sprite.draw()
@@ -28,8 +29,7 @@ class GameObject(object):
 
 class King(GameObject):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-    
+        super().__init__(**kwargs) 
 
 class Switch(GameObject):
     pass
