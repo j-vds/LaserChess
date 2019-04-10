@@ -1,7 +1,7 @@
 import pyglet
 
 class GameObject(object):
-    def __init__(self, x=None, y=None, vakje_w=50, vakje_h=50, image=None):
+    def __init__(self, x=None, y=None, vakje_w=50, vakje_h=50, image=None, team=0):
         ''' vakje_w: width van 1 vakje hier 50
             vakje_h: height van 1 vakje hier 50
             x: abs x locatie
@@ -13,13 +13,13 @@ class GameObject(object):
             x, y = 0, 0
         self.x, self.y = x, y #abs location nodig voor de sprite te kunnen tekenen
     
-        if image:
-            img = pyglet.image.load(image) #mss op voorhand oproepen en stockeren in een dict-> performance
-            self.sprite = pyglet.sprite.Sprite(img, self.x, self.y)
+        if isinstance(image, pyglet.image.ImageData):
+            #image = pyglet.image.load(image) #mss op voorhand oproepen en stockeren in een dict-> performance
+            self.sprite = pyglet.sprite.Sprite(image, self.x, self.y)
 
         self.rotation = 0
         self.maxrot = 1
-        self.team = 0
+        self.team = team #0 or 1
     
     def draw(self):
         self.sprite.draw()
@@ -27,9 +27,10 @@ class GameObject(object):
     def move(self, new_x, new_y):
         pass
 
+
 class King(GameObject):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs) 
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs) 
 
 class Switch(GameObject):
     pass
