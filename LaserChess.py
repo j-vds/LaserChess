@@ -49,16 +49,10 @@ class Scherm(pyglet.window.Window):
         if button == pyglet.window.mouse.RIGHT:
             self.objlist[(vak_x, vak_y)] = King(vak_x*50, vak_y*50, image=self.images['king.png'])
         elif button == pyglet.window.mouse.LEFT:
-            if isinstance(self.objlist.get((vak_x,vak_y), None), King): #vermijd zo keyerror
-                #teken cirkels:
-                for i in range(-1,2):
-                    for j in range(-1,2):
-                        if (i==0)*(j==0):
-                            continue
-                        else:
-                            self.objlist[(vak_x+i, vak_y+j)] = GameObject(50*(vak_x+i)+10, 50*(vak_y+j)+10, image=self.images['circle.png'])
-            
-                
+            if self.objlist.get((vak_x,vak_y), None) != None: #vermijd zo keyerror
+                self.objlist[(vak_x, vak_y)].click(self.objlist, self.images['circle.png'])
+            #self.objlist[(vak_x, vak_y)].click(self.objlist, self.images['circle.png'])
+
         #self.draw_list.append(GameObject(vak_x*50, vak_y*50, image=self.images['circle.png']))
 
 
