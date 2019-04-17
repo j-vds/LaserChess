@@ -69,13 +69,8 @@ class King(GameObject):
     
     def click(self, objlist, img_circle):
         if self.clicked:
-            print("tweede click")
-            for key in [i for i in objlist.keys()]: #omdat de grootte verandert van de dictionary
-                if isinstance(objlist[key], Circle):
-                    objlist[key].delete()
-                    del objlist[key]
-
-            self.clicked = False        
+            self.clicked = False
+        
         else:
             vak_x = self.x/50
             vak_y = self.y/50
