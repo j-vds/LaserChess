@@ -8,7 +8,8 @@ class GameObject(object):
             y: abs y locatie
             image: afbeelding, mss afbeeldingenset
         '''
-        self.vakje_w, self.vakje_h = vakje_w, vakje_h
+        self.vakje_w = vakje_w
+        self.vakje_h = vakje_h
         if (x == None) or (y == None):
             x, y = 0, 0
         self.x, self.y = x, y #abs location nodig voor de sprite te kunnen tekenen

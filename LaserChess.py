@@ -19,7 +19,7 @@ class Scherm(pyglet.window.Window):
         self.veld = self.create_veld() #todo verander de afbeeldingen zodat ze een achtergrond hebben
         self.objlist = {}  #{(1,1)=obj op deze plaats} dit zou de cirkels kunnen bevatten
 
-        ''' 
+        
         #test het is:
         img = "res/images/empty.png"
         self.vakjes = []
@@ -31,7 +31,7 @@ class Scherm(pyglet.window.Window):
         self.vakjes.append(King(image="res/images/king.png"))
         
         #via een menu kan men het veld kiezen, dit wordt ingelezen uit een bepaalde file
-        '''
+        
 
     #pyglet functions:
     def on_draw(self):
