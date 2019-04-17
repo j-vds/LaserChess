@@ -73,6 +73,7 @@ class Scherm(pyglet.window.Window):
                 self.objlist_2[(vak_x, vak_y)].click(self.objlist_1, self.images['circle.png'])
                 #verwijder alle witte bollen
                 self.objlist_2 = {}
+                self.actief = None
             ############
 
             #klik ik op een speelstuk
