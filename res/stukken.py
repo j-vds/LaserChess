@@ -50,7 +50,7 @@ class Circle(GameObject):
     def click(self, objlist, img_circle):
         #verwijder cirkels en verschuiv pion
         del objlist[self.parent.location(False)]
-        self.parent.click(objlist, img_circle)
+        #self.parent.click(objlist, img_circle)
         self.parent>>(self.x-10, self.y-10)
         objlist[(self.x//50, self.y//50)] = self.parent
         
@@ -67,21 +67,16 @@ class King(GameObject):
         return self
     
     
-    def click(self, objlist, img_circle):
-        if self.clicked:
-            self.clicked = False
-        
-        else:
+    def click(self, objlist_1,objlist_2, img_circle):
             vak_x = self.x/50
             vak_y = self.y/50
             #teken cirkels
             for i in range(-1,2):
                 for j in range(-1,2):
-                    if (i==0)*(j==0):
+                    if (i==0)*(j==0) or objlist_1.get((vak_x+i, vak_y+j)) != None:
                         continue
                     else:
-                        objlist[(vak_x+i, vak_y+j)] = Circle(self, x=50*(vak_x+i)+10, y=50*(vak_y+j)+10, image=img_circle)
-            self.clicked = True
+                        objlist_2[(vak_x+i, vak_y+j)] = Circle(self, x=50*(vak_x+i)+10, y=50*(vak_y+j)+10, image=img_circle)
 
         
 
