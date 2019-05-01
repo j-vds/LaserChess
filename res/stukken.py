@@ -1,7 +1,7 @@
 import pyglet
 
 class GameObject(object):
-    def __init__(self, x=None, y=None, vakje_w=50, vakje_h=50, image=None, team=0, movable=True):
+    def __init__(self, x=None, y=None, vakje_w=50, vakje_h=50, image=None, team=0, movable=True, maxrot=1):
         ''' vakje_w: width van 1 vakje hier 50
             vakje_h: height van 1 vakje hier 50
             x: abs x locatie
@@ -19,7 +19,7 @@ class GameObject(object):
             self.sprite = pyglet.sprite.Sprite(image, self.x, self.y)
 
         self.rotation = 0
-        self.maxrot = 1
+        self.maxrot = maxrot
         self.team = team #0 or 1
         self.movable = movable
         self.clicked = False
@@ -39,8 +39,8 @@ class GameObject(object):
     def move(self, new_x, new_y):
         pass
     
-    def click(self, objlist, img_circle):
-        pass
+    def click(self, *args):
+        return False
 
 class Circle(GameObject):
     def __init__(self, stuk, *args, **kwargs):
@@ -53,6 +53,7 @@ class Circle(GameObject):
         #self.parent.click(objlist, img_circle)
         self.parent>>(self.x-10, self.y-10)
         objlist[(self.x//50, self.y//50)] = self.parent
+        return True
         
 
 
@@ -77,7 +78,7 @@ class King(GameObject):
                         continue
                     else:
                         objlist_2[(vak_x+i, vak_y+j)] = Circle(self, x=50*(vak_x+i)+10, y=50*(vak_y+j)+10, image=img_circle)
-
+            return True
         
 
 class Switch(GameObject):
@@ -92,7 +93,13 @@ class Deflector(GameObject):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-class Laser(GameObject):
+class LaserBlock(GameObject):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, movable=False, maxrot=2, **kwargs)
+        print(self.maxrot)
+    
+    def set_rotation(self, rotation):
+        self.rotation = rotation%self.maxrot
+    
+
                 

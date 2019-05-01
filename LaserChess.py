@@ -1,7 +1,10 @@
 import glob
 import pyglet
 from pyglet.window import FPSDisplay
-from res.stukken import GameObject, King
+from pyglet.window import key
+
+from res.stukken import GameObject, King, LaserBlock
+
 
 #ok cava ik zie hoe het werkt ik ben niet helemaal ok met hoe het werkt tho
 #ikke u huidige code apart opgeslagen en dan deze is mijn aangepaste versie
@@ -26,6 +29,7 @@ class Scherm(pyglet.window.Window):
         self.actief = None
         self.objlist_1 = {}  #{(1,1)=obj op deze plaats} dit zou de cirkels kunnen bevatten
         self.objlist_2 = {}
+        #self.laserlist = []
         '''
         #test het is:
         img = "res/images/empty.png"
@@ -54,6 +58,10 @@ class Scherm(pyglet.window.Window):
         #teken layer 2 witte bollen als nodig
         for q in self.objlist_2.values():
             q.draw()
+
+        #teken layer 3 lasers
+        #for l in self.laserlist:
+        #    l.draw()
 
 
         #draw fps counter
@@ -87,14 +95,19 @@ class Scherm(pyglet.window.Window):
                 #dit is nu het speelstuk dat ik wil aanklikken
                 else:
                     self.objlist_2 = {}
-                    self.objlist_1[(vak_x, vak_y)].click(self.objlist_1,self.objlist_2, self.images['circle.png'])
-                    self.actief = self.objlist_1[(vak_x, vak_y)]
+                    if self.objlist_1[(vak_x, vak_y)].click(self.objlist_1,self.objlist_2, self.images['circle.png']):
+                        self.actief = self.objlist_1[(vak_x, vak_y)]
 
 
             #self.objlist[(vak_x, vak_y)].click(self.objlist, self.images['circle.png'])
 
         #self.draw_list.append(GameObject(vak_x*50, vak_y*50, image=self.images['circle.png']))
 
+
+    #testing laser
+    def on_key_press(self, symbol, modifiers):
+        if symbol == key.SPACE:
+            self.objlist_1[(0,0,)] = LaserBlock(0, 0, image=self.images['laserblock.png'])
 
     def update(self, dt):
         pass
