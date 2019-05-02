@@ -5,6 +5,7 @@ from pyglet.sprite import Sprite
 
 V = '|'
 H = '-'
+X = '+'
 T1 = '\\'
 T2 = '/'
 
@@ -19,8 +20,10 @@ class LaserVeld(object):
         #pyglet bazaar
         pass
     
-    def set_veld(self, veld):
+    def set_veld(self, veld, rot=None):
         self.veld = veld
+        if rot:
+            self.rot = rot
         print(veld)
         self.w = len(veld[0])
         self.h = len(veld)
@@ -54,7 +57,10 @@ class LaserVeld(object):
             if ret == False:
                 break
             elif ret == True:
-                veld[l_y][l_x] = V if (rot in 'UD') else H
+                if veld[l_y][l_x] != '.':
+                    veld[l_y][l_x] = X
+                else:
+                    veld[l_y][l_x] = V if (rot in 'UD') else H
             else:
                 rot = ret
         print(self.print(veld))
@@ -111,7 +117,7 @@ if __name__ == '__main__':
         ['.','.','/','.','.','\\','.','.','.','.'],
         ['.','.','.','.','.','.','.','.','.','.'],
         ['.','.','\\','.','.','.','.','/','.','.'],
-        ['.','.','.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','L','.','.','.','.'],
         ['.','.','.','.','.','.','.','\\','.','.'],
         ['.','.','.','/','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','\\','.','.'],
@@ -128,8 +134,8 @@ if __name__ == '__main__':
         '.../......',
         '.......\\..'
     '''
-    a.set_veld(v1)
-    a.set_laserpos(5,4,'U')
+    a.set_veld(v1, 'U')
+    #a.set_laserpos(5,4,'U')
     print(a)
     
     a.send_laser()
